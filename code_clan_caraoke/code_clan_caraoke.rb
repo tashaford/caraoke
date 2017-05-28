@@ -24,13 +24,10 @@ class Caraoke
   end
 
   def run()
-    while(!@game.is_won?)
-      @viewer.start(@game.current_player.name)
-      @game.next_turn(@dice.roll)
-      @viewer.show_update(@game.log.last)
+    while()
+   
     end
 
-    @viewer.end(@game.winner.name)
   end
 
 end

@@ -9,9 +9,9 @@ class TestRoom < MiniTest::Test
 
   def setup()
     @room = Room.new(1)
-    @guest_1 = Guest.new("Natasha", "Ford", 30)
-    @guest_2 = Guest.new("Michael", "Robertson", 50)
-    @guest_3 = Guest.new("Euan", "Bennet", 45)
+    @guest_1 = Guest.new("Natasha", "Ford", 30, "Dead or Alive")
+    @guest_2 = Guest.new("Michael", "Robertson", 50, "Dead or Alive")
+    @guest_3 = Guest.new("Euan", "Bennet", 45, "Bohemian Rhapsody")
     @song_1 = Song.new("Dead or Alive", "Bon Jovi")
     @song_2 = Song.new("Bohemian Rhapsody", "Queen")
   end
@@ -73,6 +73,11 @@ class TestRoom < MiniTest::Test
   def test_room_entry_fee()
     @room.put_guest_in_guestlist(@guest_1)
     assert_equal(25, @room.pay_entry_fee(@guest_1))
+  end
+
+  def test_is_fav_song_on_playlist()
+    @room.put_song_in_playlist(@song_1)
+    assert_equal("Woo!", @room.fav_song_on_playlist(@guest_1))
   end
 
 end

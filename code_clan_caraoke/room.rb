@@ -40,9 +40,9 @@ class Room
     end
   end
 
-    def get_first_name_from_guestlist()
-      whos_in = []
-      for names in @guestlist
+  def get_first_name_from_guestlist()
+    whos_in = []
+    for names in @guestlist
       # if names.get_first_name == search_name
       #   first_name = names.get_first_name
       #   second_name = names.get_last_name
@@ -65,6 +65,14 @@ class Room
       purse = guest_to_pay.get_purse  - @entry_fee
     end
     return purse
+  end
+
+  def fav_song_on_playlist(guest)
+    for song in @playlist
+      if song.get_title.include? guest.get_fav_song
+        return "Woo!"
+      end
+    end
   end
 
 end
